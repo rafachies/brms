@@ -30,7 +30,7 @@ import org.drools.runtime.StatefulKnowledgeSession;
 import org.jbpm.process.audit.JPAWorkingMemoryDbLogger;
 import org.jbpm.process.workitem.wsht.SyncWSHumanTaskHandler;
 import org.rchies.bpm.dao.SessionInfoDAO;
-import org.rchies.bpm.process.listener.SnoaProcessEventListener;
+import org.rchies.bpm.process.listener.CustomProcessEventListener;
 import org.rchies.bpm.task.HumanTaskManager;
 import org.rchies.bpm.util.SystemPropertyUtil;
 import org.slf4j.Logger;
@@ -53,7 +53,7 @@ public class SessionManager {
 	private HumanTaskManager humanTaskManager;
 
 	@Inject
-	private SnoaProcessEventListener snoaProcessEventListener;
+	private CustomProcessEventListener customProcessEventListener;
 	
 	@Inject
 	private SystemPropertyUtil systemPropertyUtil;
@@ -89,7 +89,7 @@ public class SessionManager {
 		SyncWSHumanTaskHandler humanTaskHandler = new SyncWSHumanTaskHandler(humanTaskManager.getLocalTaskService(), session);
 		humanTaskHandler.connect();
 		session.getWorkItemManager().registerWorkItemHandler("Human Task", humanTaskHandler);
-		session.addEventListener(snoaProcessEventListener);
+		session.addEventListener(customProcessEventListener);
 	}
 
 
@@ -101,7 +101,7 @@ public class SessionManager {
 		sessionconfigproperties.put("drools.processInstanceManagerFactory", "org.jbpm.persistence.processinstance.JPAProcessInstanceManagerFactory");
 		sessionconfigproperties.put("drools.processSignalManagerFactory", "org.jbpm.persistence.processinstance.JPASignalManagerFactory");
 		KnowledgeSessionConfiguration configuration = KnowledgeBaseFactory.newKnowledgeSessionConfiguration(sessionconfigproperties);
-		Integer sessionId = systemPropertyUtil.getInteger(SystemPropertyUtil.SNOA_BPM_SESSION_ID);
+		Integer sessionId = systemPropertyUtil.getInteger(SystemPropertyUtil.BPM_SESSION_ID);
 		SessionInfo sessionInfo = sessionInfoDAO.findById(sessionId);
 		if (isNewSessionId(sessionInfo)) {
 			logger.info("There is no persisted session with id {}, we're going to create it", sessionId);

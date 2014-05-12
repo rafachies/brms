@@ -50,7 +50,7 @@ public class HumanTaskManager {
 	private TaskCheckService taskCheckService;
 	
 	@Inject
-	private CustomTaskEventListener snoaTaskEventListener;
+	private CustomTaskEventListener customTaskEventListener;
 
 	@PersistenceUnit(unitName = "org.jbpm.task")
 	private EntityManagerFactory entityManagerFactory;
@@ -62,7 +62,7 @@ public class HumanTaskManager {
 		UserGroupCallbackManager callBackManager = UserGroupCallbackManager.getInstance();
 		callBackManager.setCallback(new CustomUserCallback());
 		TaskService taskService = new TaskService(entityManagerFactory, SystemEventListenerFactory.getSystemEventListener());
-		taskService.addEventListener(snoaTaskEventListener);
+		taskService.addEventListener(customTaskEventListener);
 		localTaskService = new LocalTaskService(taskService);
 	}
 

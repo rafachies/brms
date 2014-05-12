@@ -2,8 +2,7 @@ package org.rchies.bpm.util;
 
 public class SystemPropertyUtil {
 	
-	public static final String SNOA_BPM_SESSION_ID = "snoa.bpm.session.id";
-	public static final String SNOA_BPM_LEGACY_URI = "snoa.bpm.legacy.uri";
+	public static final String BPM_SESSION_ID = "bpm.session.id";
 
 	public Integer getInteger(String propertyKey) {
 		String propertyValue = System.getProperty(propertyKey);

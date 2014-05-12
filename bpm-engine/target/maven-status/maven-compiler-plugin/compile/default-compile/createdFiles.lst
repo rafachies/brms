@@ -1,0 +1,17 @@
+org/rchies/bpm/dao/SessionInfoDAO.class
+org/rchies/bpm/process/listener/SnoaProcessEventListener.class
+org/rchies/bpm/util/SystemPropertyUtil.class
+org/rchies/bpm/task/HumanTaskManager.class
+org/rchies/bpm/service/RestActivator.class
+org/rchies/bpm/util/Producers.class
+org/rchies/bpm/task/listener/SnoaTaskEventListener.class
+org/rchies/bpm/util/ClasspathUtils.class
+org/rchies/bpm/service/ProcessWS.class
+org/rchies/bpm/process/vo/ProcessVO.class
+org/rchies/bpm/service/TaskWS.class
+org/rchies/bpm/process/ProcessManager.class
+org/rchies/bpm/util/TaskCheckService.class
+org/rchies/bpm/process/SessionManager.class
+org/rchies/bpm/util/PropertyNotFoundException.class
+org/rchies/bpm/process/vo/TaskVO.class
+org/rchies/bpm/task/security/CustomUserCallback.class
